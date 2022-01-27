@@ -1,4 +1,4 @@
-# LibrerÌas
+# Librer√≠as
 
 if (!require(ggpubr) ) {
   install.packages("ggpubr", dependencies = TRUE )
@@ -26,12 +26,12 @@ datos <- datosLeidos
 
 
 # Pregunta 1
-#(21 puntos) Harry cree que, en promedio, los estudiantes de Slytherin obtuvieron 10 puntos m·s durante el primer
-#trimestre que durante el segundo. Aunque Hermione no est· de acuerdo con que su amigo participe de apuestas, ha
+#(21 puntos) Harry cree que, en promedio, los estudiantes de Slytherin obtuvieron 10 puntos m√°s durante el primer
+#trimestre que durante el segundo. Aunque Hermione no est√° de acuerdo con que su amigo participe de apuestas, ha
 #decidido corroborar este hecho usando bootstrapping con 5.000 repeticiones con el valor 531 como semilla y nivel de
-#significaciÛn ??=0,05.
+#significaci√≥n Œ±=0,05.
 
-#FunciÛn para graficar las muestras.
+#Funci√≥n para graficar las muestras.
 graficar_distribucion <- function(distribucion, ...) {
   
   observaciones <- data.frame(distribucion)
@@ -40,13 +40,13 @@ graficar_distribucion <- function(distribucion, ...) {
                             ylab = "Frecuencia", ...)
   qq <- ggqqplot(observaciones , x = "distribucion", ...)
   
-  # Crear una ˙nica figura con todos los gr·ficos de dispersiÛn
+  # Crear una √∫nica figura con todos los gr√°ficos de dispersi√≥n
   figura <- ggarrange(histograma, qq ,ncol = 2 , nrow = 1)
   print(figura)
 }
 
 #-------------------------------------------------------------------------------
-#HipÛtesis:
+#Hip√≥tesis:
 
 #H0: la diferencia en el promedio de los estudiantes de Slytherin durante el 
 #    primer trimestres y el segundo trimestre es de 10 puntos
@@ -57,7 +57,7 @@ graficar_distribucion <- function(distribucion, ...) {
 #Sea uA: el promedio durante el primer trimestre.
 #Sea uB: el promedio durante el segundo trimestre.
 
-#De esta manera, las hipÛtesis en su forma matem·tica son:
+#De esta manera, las hip√≥tesis en su forma matem√°tica son:
 
 #H0: uA-uB = 10
 #HA: uA-uB > 10
@@ -82,16 +82,16 @@ graficar_distribucion(trimestre1)
 graficar_distribucion(trimestre2)
 
 # Al analizar los histogramas y el comportamiento de las muestras, podemos
-# comprobar que est·s no siguen una distribuciÛn normal, pues se presentan
-# datos atÌpicos y se encuentran ligeramente desplazadas.
+# comprobar que est√°s no siguen una distribuci√≥n normal, pues se presentan
+# datos at√≠picos y se encuentran ligeramente desplazadas.
 
 #-------------------------------------------------------------------------------
-#JustificaciÛn:
-# Como los datos no siguen una distribuciÛn normal y adem·s, la cantidad de
-# muestras es pequeÒa, se utilizar· el procedimiento de Bootstrapping
-# para muestras pareadas empleando como par·metro de interÈs la media.
+#Justificaci√≥n:
+# Como los datos no siguen una distribuci√≥n normal y adem√°s, la cantidad de
+# muestras es peque√±a, se utilizar√° el procedimiento de Bootstrapping
+# para muestras pareadas empleando como par√°metro de inter√©s la media.
 
-# Establecer nivel de significaciÛn.
+# Establecer nivel de significaci√≥n.
 alfa <- 0.05
 
 # Calcular la diferencia entre ambas observaciones .
@@ -100,7 +100,7 @@ diferencia <- trimestre2 - trimestre1
 # Calcular la media observada de las diferencias .
 valor_observado <- mean ( diferencia )
 
-# Generar la distribuciÛn bootstrap.
+# Generar la distribuci√≥n bootstrap.
 B <- 5000
 valor_nulo <- 10
 
@@ -112,12 +112,12 @@ p <- ( sum(  distribucion_nula  > valor_observado  ) + 1) / ( B + 1)
 cat (" Valor p:", p )
 
 
-# ConclusiÛn:
+# Conclusi√≥n:
 # Luego de realizar la prueba, se obtiene un valor de p: 0.03839232, este es
 # inferior al nivel de significancia (a = 0.05) por lo que se rechaza H0 en favor
 # de HA, por lo que existe mucha evidencia a favor de HA.
 # con esto, se puede afirmar con un 95% de confianza que en promedio, los 
-# estudiantes de Slytherin obtuvieron 10 puntos m·s durante el primer que durante
+# estudiantes de Slytherin obtuvieron 10 puntos m√°s durante el primer que durante
 # el segundo.
 
 
@@ -126,17 +126,17 @@ cat (" Valor p:", p )
 # Pregunta 2
 
 
-# ImportaciÛn de datos
+# Importaci√≥n de datos
 # Se le debe ingresar el archivo "Datos-PA"
 datos_p2 <- read.csv2(file.choose(),head=TRUE ,sep=";", stringsAsFactors = TRUE  )
 
-# Pregunta 2: Harry tambiÈn cree que, en promedio, los estudiantes de Gryffindor obtuvieron 1 
-#puntos m·s que los de Ravenclaw durante el segundo trimestre. Ron, por su parte, est· seguro de que la 
-#ventaja lograda por los primeros fue mayor y est· a punto de iniciar una pelea con Harry por esta razÛn.
-#Para evitar el conflicto entre sus amigos, Hermione ha decidido verificar quiÈn tiene la razÛn mediante una 
-#simulaciÛn de MonteCarlo con 2.000 repeticiones, usando el valor 847 como semilla y nivel de significaciÛn alfa=0,05.
+# Pregunta 2: Harry tambi√©n cree que, en promedio, los estudiantes de Gryffindor obtuvieron 1 
+#puntos m√°s que los de Ravenclaw durante el segundo trimestre. Ron, por su parte, est√° seguro de que la 
+#ventaja lograda por los primeros fue mayor y est√° a punto de iniciar una pelea con Harry por esta raz√≥n.
+#Para evitar el conflicto entre sus amigos, Hermione ha decidido verificar qui√©n tiene la raz√≥n mediante una 
+#simulaci√≥n de MonteCarlo con 2.000 repeticiones, usando el valor 847 como semilla y nivel de significaci√≥n alfa=0,05.
 
-# HipÛtesis a Contrastar:
+# Hip√≥tesis a Contrastar:
 # H0: El promedio de los puntos de los estudiantes es el mismo para las casas de
 # Griffindor y Ravenclaw (ua - ub = 0)
 
@@ -145,12 +145,12 @@ datos_p2 <- read.csv2(file.choose(),head=TRUE ,sep=";", stringsAsFactors = TRUE 
 
 
 
-# DefiniciÛn de Funciones
+# Definici√≥n de Funciones
 
-# FunciÛn para calcular la diferencia de medias.
+# Funci√≥n para calcular la diferencia de medias.
 # Argumentos :
-# - muestra_1 , muestra_2: vectores num√©ricos con las muestras a comparar .
-# - FUN: funciÛn del estadÌstico E para el que se calcula la diferencia .
+# - muestra_1 , muestra_2: vectores num√É¬©ricos con las muestras a comparar .
+# - FUN: funci√≥n del estad√≠stico E para el que se calcula la diferencia .
 # Valor :
 # - diferencia E_1 - E_2.
 calcular_diferencia <- function(muestra_1, muestra_2, FUN) {
@@ -158,18 +158,18 @@ calcular_diferencia <- function(muestra_1, muestra_2, FUN) {
   return (diferencia)
 }
 
-# FunciÛn para hacer una permutaciÛn y calcular el estadÌstico
-# de interÈs.
+# Funci√≥n para hacer una permutaci√≥n y calcular el estad√≠stico
+# de inter√©s.
 # Argumentos :
-# - muestra_1 , muestra_2: vectores num√©ricos con las muestras a comparar .
-# - FUN: funciÛn del estadÌstico E para el que se calcula la diferencia .
+# - muestra_1 , muestra_2: vectores num√É¬©ricos con las muestras a comparar .
+# - FUN: funci√≥n del estad√≠stico E para el que se calcula la diferencia .
 # Valor :
 # - diferencia E_1 - E _2.
 permutar <- function(muestra_1 , muestra_2, FUN) {
   n_1 <- length(muestra_1)
   n_2 <- length(muestra_2)
   
-  # Hacer la permutaciÛn.
+  # Hacer la permutaci√≥n.
   permutacion <- sample (c( muestra_1 , muestra_2) , size = n_1 + n_2, replace = FALSE)
   
   # Asignar elementos a los dos grupos .
@@ -181,14 +181,14 @@ permutar <- function(muestra_1 , muestra_2, FUN) {
   return (calcular_diferencia(permutacion_1, permutacion_2 , FUN))
 }
 
-# FunciÛn para calcular el valor p.
+# Funci√≥n para calcular el valor p.
 # Argumentos :
-# - distribucion : distribuciÛn nula del estadÌstico de interÈs.
-# - valor_observado : valor del estadÌstico de interÈs para las muestras
+# - distribucion : distribuci√≥n nula del estad√≠stico de inter√©s.
+# - valor_observado : valor del estad√≠stico de inter√©s para las muestras
 # originales .
 # - repeticiones : cantidad de permutaciones a realizar .
-# - alternative : tipo de hipÛtesis alternativa . "two.sided" para
-# hipÛtesis bilateral , "greater" o "less" para hipÛtesis unilaterales .
+# - alternative : tipo de hip√≥tesis alternativa . "two.sided" para
+# hip√≥tesis bilateral , "greater" o "less" para hip√≥tesis unilaterales .
 # Valor :
 # - el valor p calculado .
 calcular_valor_p <- function(distribucion, valor_observado, repeticiones, alternative){
@@ -210,39 +210,39 @@ calcular_valor_p <- function(distribucion, valor_observado, repeticiones, altern
   return(valor_p)
 }
 
-# FunciÛn para graficar una distribuciÛn.
+# Funci√≥n para graficar una distribuci√≥n.
 # Argumentos :
-# - distribucion : distribuciÛn nula del estadÌstico de interÈs.
+# - distribucion : distribuci√≥n nula del estad√≠stico de inter√©s.
 # - ...: otros argumentos a ser entregados a gghistogram y ggqqplot .
 graficar_distribucion <- function(distribucion, ...) {
   
   observaciones <- data.frame(distribucion)
   
   histograma <- gghistogram(observaciones, x = "distribucion",
-                            xlab = "Estad√≠stico de inter√©s",
+                            xlab = "Estad√É¬≠stico de inter√É¬©s",
                             ylab = "Frecuencia", ...)
   
   qq <- ggqqplot(observaciones , x = "distribucion", ...)
   
-  # Crear una ˙nica figura con todos los gr·ficos de dispersiÛn.
+  # Crear una √∫nica figura con todos los gr√°ficos de dispersi√≥n.
   figura <- ggarrange(histograma, qq ,ncol = 2 , nrow = 1)
   print(figura)
 }
 
-# FunciÛn para hacer la prueba de permutaciones .
+# Funci√≥n para hacer la prueba de permutaciones .
 # Argumentos :
-# - muestra_1 , muestra_2: vectores numÈricos con las muestras a comparar .
+# - muestra_1 , muestra_2: vectores num√©ricos con las muestras a comparar .
 # - repeticiones : cantidad de permutaciones a realizar .
-# - FUN : funciÛn del estadÌstico E para el que se calcula la diferencia .
-# - alternative : tipo de hipÛtesis alternativa . "two.sided" para
-#  hipÛtesis bilateral , "greater" o "less" para hipÛtesis unilaterales .
-# - plot : si es TRUE , construye el gr·fico de la distribuciÛn generada .
+# - FUN : funci√≥n del estad√≠stico E para el que se calcula la diferencia .
+# - alternative : tipo de hip√≥tesis alternativa . "two.sided" para
+#  hip√≥tesis bilateral , "greater" o "less" para hip√≥tesis unilaterales .
+# - plot : si es TRUE , construye el gr√°fico de la distribuci√≥n generada .
 # - ...: otros argumentos a ser entregados a graficar_distribucion.
 contrastar_hipotesis_permutaciones <- function(muestra_1 , muestra_2,
                                                repeticiones, FUN ,
                                                alternative, plot , ...){
   cat("Prueba de permutaciones\n\n")
-  cat("Hip√≥tesis alternativa :", alternative , "\n")
+  cat("Hip√É¬≥tesis alternativa :", alternative , "\n")
   observado <- calcular_diferencia(muestra_1, muestra_2 , FUN)
   cat("Valor observado :", observado , "\n")
   distribucion <- rep(NA, repeticiones)
@@ -279,15 +279,15 @@ contrastar_hipotesis_permutaciones(a, b, repeticiones = R,
                                    plot = TRUE,
                                    color = "blue", fill = "blue")
 
-# Se muestra adem·s el histograma y gr·fico Q-Q de la distribuciÛn para la 
+# Se muestra adem√°s el histograma y gr√°fico Q-Q de la distribuci√≥n para la 
 # diferencia de medias generada mediante permutaciones.
 
 
-# ConclusiÛn:
-# Con respecto a la prueba realizada y utilizando para ello una simulaci√≥n de
+# Conclusi√≥n:
+# Con respecto a la prueba realizada y utilizando para ello una simulaci√É¬≥n de
 # Monte Carlo, el resultado del valor p obtenido de 0.00149925, inferior a un
-# nivel de significaci√≥n de 0.05, por lo que se rechaza la hipÛtesis nula a favor 
-# de la hipÛtesis alternativa, de esta manera se concluye con 95% de confianza que 
+# nivel de significaci√É¬≥n de 0.05, por lo que se rechaza la hip√≥tesis nula a favor 
+# de la hip√≥tesis alternativa, de esta manera se concluye con 95% de confianza que 
 # el promedio de los puntos de los estudiantes es distinto para las casas de
 # Gryffindor y Ravenclaw.
 
@@ -298,25 +298,26 @@ contrastar_hipotesis_permutaciones(a, b, repeticiones = R,
 
 # Pregunta 3
 
-# H0 = No existe preferencia al retorno de una actividad en especÌfico.
+# H0 = No existe preferencia al retorno de una actividad en espec√≠fico.
 # HA = Hay una preferencia en una actividad para el retorno a presencialidad.
 
 # Contexto: La USACH visto el inminente retorno a la presencialidad desea saber
-# la opiniÛn de su estudiantado respecto al retorno.
-# En concreto si est·n dispuestos a volver totalmente presencial o si se debe
+# la opini√≥n de su estudiantado respecto al retorno.
+# En concreto si est√°n dispuestos a volver totalmente presencial o si se debe
 # hacer un retorno gradual (donde tengan prioridad las actividades con mayor 
 # preferencias, en caso de existir).
 
 # Dado esto es que la universidad elige un grupo de 5000 personas al azar,
-# siguiendo una distribuciÛn normal respecto al aÒo que cursan. Y se les emplea
+# siguiendo una distribuci√≥n normal respecto al a√±o que cursan. Y se les emplea
 # una encuesta con escala Leininger preguntando acerca de cada una de las 
 # actividades que ofrece la universidad como: asistir a clases, asistir a 
-# ayudantÌas, ser ayudante, participar en actividades extra acadÈmicas, etc.
+# ayudant√≠as, ser ayudante, participar en actividades extra acad√©micas, etc.
 # donde cada estudiante indica su prioridad.
 
-# 
-# 
-# 
+# Dada encuesta toma valores de 1 a 7 en cada variables, adicionalmente 
+# se utilizar√° el modelo de regresi√≥n lineal m√∫ltiple, pues para describir el
+# fen√≥meno, es necesario a√±adir diversas variables al ambiente de trabajo.
+
 
 
 
