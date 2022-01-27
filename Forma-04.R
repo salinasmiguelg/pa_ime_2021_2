@@ -128,7 +128,7 @@ cat (" Valor p:", p )
 
 # Importación de datos
 # Se le debe ingresar el archivo "Datos-PA"
-datos_p2 <- read.csv2(file.choose(),head=TRUE ,sep=";", stringsAsFactors = TRUE  )
+datos_p2 <- datosLeidos
 
 # Pregunta 2: Harry también cree que, en promedio, los estudiantes de Gryffindor obtuvieron 1 
 #puntos más que los de Ravenclaw durante el segundo trimestre. Ron, por su parte, está seguro de que la 
