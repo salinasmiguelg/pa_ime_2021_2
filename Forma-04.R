@@ -117,8 +117,8 @@ cat (" Valor p:", p )
 # inferior al nivel de significancia (a = 0.05) por lo que se rechaza H0 en favor
 # de HA, por lo que existe mucha evidencia a favor de HA.
 # con esto, se puede afirmar con un 95% de confianza que en promedio, los 
-# estudiantes de Slytherin obtuvieron 10 puntos más durante el primer que durante
-# el segundo.
+# estudiantes de Slytherin obtuvieron 10 puntos más durante el primer trimestre
+# que durante el segundo trimestre.
 
 
 
